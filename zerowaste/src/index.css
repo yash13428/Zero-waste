@@ -1,0 +1,24 @@
+@import './pages/pages.css';
+
+/* Reset-ish */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body { margin: 0; font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; background: #f7f7f9; color: #1a1a1a; }
+
+/* Links */
+a { color: #1a73e8; }
+
+/* App container */
+.App { min-height: 100%; display: flex; flex-direction: column; }
+
+/* Utility */
+.badge { display: inline-block; }
+
+/* Color tokens */
+:root {
+  --saffron: #ff9933;
+  --green: #138808;
+}
+
+/* Button focus */
+button:focus, input:focus, textarea:focus, select:focus { outline: 3px solid rgba(19,136,8,0.25); }

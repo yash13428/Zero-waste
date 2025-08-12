@@ -1,0 +1,58 @@
+.donation-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-left: 6px solid #ff9933;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.donation-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  background: #138808;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status.available {
+  color: #138808;
+  font-weight: 800;
+}
+
+.donation-card-body .row {
+  margin: 4px 0;
+}
+
+.row.subtle {
+  color: #666;
+  font-size: 12px;
+}
+
+.donation-card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.btn.whatsapp { background: #25D366; color: white; }
+.btn.email { background: #1a73e8; color: white; }
+.btn.claim { background: #ff9933; color: white; }
