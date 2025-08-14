@@ -1,5 +1,5 @@
 To run the project locally - 
 
-cd /workspace/zerowaste
+cd /zerowaste
 npm install
 npm run dev
