@@ -2,19 +2,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
+  padding: 16px 24px;
   background: #ffffffcc;
   border-bottom: 4px solid #ff9933;
   position: sticky;
   top: 0;
   z-index: 10;
   backdrop-filter: blur(6px);
+  min-height: 64px;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .brand-link {
@@ -24,10 +26,10 @@
 }
 
 .brand-flag {
-  width: 10px;
-  height: 22px;
-  border-radius: 2px;
-  margin-right: 2px;
+  width: 12px;
+  height: 24px;
+  border-radius: 3px;
+  margin-right: 3px;
 }
 
 .brand-flag.saffron { background: #ff9933; }
@@ -36,30 +38,323 @@
 
 .brand-text {
   font-weight: 800;
-  font-size: 20px;
+  font-size: 22px;
   color: #1a1a1a;
-  margin-left: 8px;
+  margin-left: 10px;
 }
 
 .tagline {
   font-size: 14px;
-  color: #444;
+  color: #555;
+  font-weight: 500;
 }
 
 .nav-links {
   display: flex;
-  gap: 14px;
+  gap: 16px;
+  align-items: center;
 }
 
 .nav-links a {
   color: #1a1a1a;
   text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 10px 14px;
+  border-radius: 8px;
   font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
 .nav-links a.active, .nav-links a:hover {
   background: #138808;
   color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(19, 136, 8, 0.2);
+}
+
+/* Hover submenu for Home */
+.nav-item.with-submenu {
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.25s ease;
+  min-width: 160px;
+  z-index: 20;
+  margin-top: 4px;
+}
+
+.nav-item.with-submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.submenu a {
+  display: block;
+  padding: 12px 18px;
+  color: #1a1a1a;
+  text-decoration: none;
+  border-radius: 0;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.submenu a:hover {
+  background: #f8f9fa;
+  color: #1a1a1a;
+}
+
+/* User navigation */
+.user-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 10px;
+}
+
+.user-greeting {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 14px;
+}
+
+.logout-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.2);
+}
+
+/* CTA Button */
+.cta-btn {
+  background: #ff9933;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  margin-left: 12px;
+}
+
+.cta-btn:hover {
+  background: #e6892e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  color: #1a1a1a;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-menu-toggle:hover {
+  background-color: #f5f5f5;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  .nav-header {
+    padding: 12px 16px;
+  }
+  
+  .tagline {
+    display: none;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    padding: 24px;
+    border-bottom: 2px solid #ff9933;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    gap: 8px;
+  }
+  
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .user-nav {
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  
+  .cta-btn {
+    margin: 12px 0;
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+  }
+  
+  /* Mobile submenu */
+  .submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: #f8f9fa;
+    margin-top: 8px;
+    border-radius: 8px;
+  }
+  
+  .submenu a {
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-text {
+    font-size: 20px;
+  }
+  
+  .nav-header {
+    padding: 10px 12px;
+  }
+  
+  .user-greeting {
+    font-size: 13px;
+  }
+}
+
+/* User greeting with hover logout */
+.user-greeting-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-greeting {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.user-greeting-container:hover .user-greeting {
+  background-color: #f8f9fa;
+  transform: translateY(-1px);
+}
+
+.logout-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  z-index: 20;
+  margin-top: 6px;
+  min-width: 130px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.25s ease;
+}
+
+.user-greeting-container:hover .logout-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.logout-dropdown .logout-btn {
+  width: 100%;
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-dropdown .logout-btn:hover {
+  background: #d32f2f;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.2);
+}
+
+/* Mobile adjustments for logout dropdown */
+@media (max-width: 768px) {
+  .user-greeting-container {
+    position: static;
+  }
+  
+  .logout-dropdown {
+    position: static;
+    margin-top: 8px;
+    box-shadow: none;
+    border: none;
+    background: #f8f9fa;
+    animation: none;
+  }
+  
+  .logout-dropdown .logout-btn {
+    width: 100%;
+    text-align: center;
+  }
 }

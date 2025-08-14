@@ -9,6 +9,7 @@
     "preview": "vite preview --port 5173 --strictPort"
   },
   "dependencies": {
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "date-fns": "^3.6.0",
     "firebase": "^10.12.5",
     "react": "^18.2.0",

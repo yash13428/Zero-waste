@@ -28,7 +28,7 @@ export default function MealCounter() {
       boxShadow: '0 6px 20px rgba(0,0,0,0.06)',
     }}>
       <span role="img" aria-label="plate">🍽️</span>
-      <span>Meals Served: {meals.toLocaleString()}</span>
+      <span>Total Meals Served: {meals.toLocaleString()}</span>
     </div>
   );
 }

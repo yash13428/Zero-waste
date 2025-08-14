@@ -9,6 +9,16 @@ const statsDocRef = doc(db, 'stats', 'global');
 
 // Donors
 export async function createDonor(donor) {
+  // Store user data in localStorage for demo (in production, this would be in Firestore)
+  const existingUsers = JSON.parse(localStorage.getItem('zerowaste_users') || '[]');
+  const newUser = {
+    ...donor,
+    createdAt: new Date().toISOString(),
+  };
+  existingUsers.push(newUser);
+  localStorage.setItem('zerowaste_users', JSON.stringify(existingUsers));
+  
+  // Also store in Firestore for the original functionality
   return addDoc(donorsCol, {
     ...donor,
     createdAt: serverTimestamp(),
@@ -17,6 +27,16 @@ export async function createDonor(donor) {
 
 // NGOs
 export async function createNGO(ngo) {
+  // Store user data in localStorage for demo (in production, this would be in Firestore)
+  const existingUsers = JSON.parse(localStorage.getItem('zerowaste_users') || '[]');
+  const newUser = {
+    ...ngo,
+    createdAt: new Date().toISOString(),
+  };
+  existingUsers.push(newUser);
+  localStorage.setItem('zerowaste_users', JSON.stringify(existingUsers));
+  
+  // Also store in Firestore for the original functionality
   return addDoc(ngosCol, {
     ...ngo,
     createdAt: serverTimestamp(),
@@ -34,6 +54,16 @@ export async function createDonation(donation) {
 
 export function subscribeAvailableDonations(onUpdate) {
   const q = query(donationsCol, where('status', '==', 'Available'), orderBy('createdAt', 'desc'));
+  return onSnapshot(q, onUpdate);
+}
+
+export function subscribeAllDonations(onUpdate) {
+  const q = query(donationsCol, orderBy('createdAt', 'desc'));
+  return onSnapshot(q, onUpdate);
+}
+
+export function subscribeClaimedDonations(onUpdate) {
+  const q = query(donationsCol, where('status', '==', 'Claimed'), orderBy('claimedAt', 'desc'));
   return onSnapshot(q, onUpdate);
 }
 
